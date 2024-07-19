@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const Shape = require('./lib/logo');
 const { writeFile } = require('fs/promises');
+const fs = require('fs')
 
 const createSVG = [
         {
@@ -30,13 +31,13 @@ const createSVG = [
     ]
     
     function writeToFile(filename, data) {
-        writeToFile(filename, data)
+        writeFile(filename, data)
     }
 
     function init() {
         inquirer.prompt(createSVG)
         .then(userData => {
-            const file = writeToFile('logo.sgv')
+            const file = writeToFile('./logo.sgv', Shape)
         })
     }
 init()

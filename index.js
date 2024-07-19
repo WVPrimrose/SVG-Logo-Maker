@@ -1,8 +1,8 @@
-const inquirer = require('inquirer')
-const Shape = require('./lib/logo')
+const inquirer = require('inquirer');
+const Shape = require('./lib/logo');
+const { writeFile } = require('fs/promises');
 
-inquirer
-    .prompt([
+const createSVG = [
         {
             name: 'text',
             type: 'input',
@@ -27,7 +27,16 @@ inquirer
             choices: ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'black', 'white', 'gray', 'brown']
         },
 
-    ])
-    .then(({text, textColor, shape, shapeColor})=>{
+    ]
+    
+    function writeToFile(filename, data) {
+        writeToFile(filename, data)
+    }
 
-    })
+    function init() {
+        inquirer.prompt(createSVG)
+        .then(userData => {
+            const file = writeToFile('logo.sgv')
+        })
+    }
+init()

@@ -31,13 +31,14 @@ const createSVG = [
     ]
     
     function writeToFile(filename, data) {
-        writeFile(filename, data)
+        return writeFile(filename, data)
     }
 
     function init() {
         inquirer.prompt(createSVG)
         .then(userData => {
-            const file = writeToFile('./logo.sgv', Shape)
+            const shape1 = new Shape (userData.text, userData.textColor, userData.shape, userData.shapeColor)
+            const file = writeFile('./logo.svg', shape1.file())
         })
     }
 init()

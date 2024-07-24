@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const Shape = require('./lib/logo');
+const { Circle, Square, Triangle } = require('./lib/logo');
 const { writeFile } = require('fs/promises');
 
 const createSVG = [
@@ -38,7 +38,7 @@ const createSVG = [
     function init() {
         inquirer.prompt(createSVG)
         .then(userData => {
-            const shape1 = new Shape(userData.text, userData.textColor, userData.shape, userData.shapeColor);
+            const shape1 = { Triangle, Circle, Square }(userData.text, userData.textColor, userData.shape, userData.shapeColor);
             writeToFile('./logo.svg', shape1.file())
         })
     }

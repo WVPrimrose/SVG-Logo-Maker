@@ -1,13 +1,14 @@
 const inquirer = require('inquirer');
 const Shape = require('./lib/logo');
 const { writeFile } = require('fs/promises');
-const fs = require('fs')
 
 const createSVG = [
         {
             name: 'text',
             type: 'input',
-            message: 'Enter text up to three characters'
+            message: 'Enter text up to three characters',
+            validate: (text) =>
+                text.length <= 3 || "Must be no more than 3 characters."
         },
         {
             name: 'textColor',
@@ -37,8 +38,8 @@ const createSVG = [
     function init() {
         inquirer.prompt(createSVG)
         .then(userData => {
-            const shape1 = new Shape (userData.text, userData.textColor, userData.shape, userData.shapeColor)
-            const file = writeFile('./logo.svg', shape1.file())
+            const shape1 = new Shape(userData.text, userData.textColor, userData.shape, userData.shapeColor);
+            writeToFile('./logo.svg', shape1.file())
         })
     }
 init()

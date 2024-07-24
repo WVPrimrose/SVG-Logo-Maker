@@ -1,6 +1,6 @@
-// should give me a string
-const Shape = require('../lib/logo.js')
-const shape1 = new Shape('ABC', 'black', 'triangle', 'green');
+const { Square, Triangle, Circle } = require('../lib/logo.js')
+// new instance for testing
+const triangle1 = new Triangle('ABC', 'black', 'triangle', 'green');
 
 describe('testing shape class', () => {
     test('should render a green triangle', () => {
@@ -8,8 +8,8 @@ describe('testing shape class', () => {
 <polygon points="150, 18 244, 182 56, 182" fill="green" />
 <text x="150" y="125" font-size="60" text-anchor="middle" fill="black">'ABC'</text>
 </svg>`;
-        const triangle = new Shape();
-        triangle.setColor('green') = this.shapeColor;
+        const triangle = new Triangle();
+        triangle.setColor('green');
         const actualSvg = triangle.render();
         expect(actualSvg).toEqual(expectSVG);
     });

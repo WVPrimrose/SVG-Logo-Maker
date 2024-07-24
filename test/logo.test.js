@@ -8,10 +8,10 @@ describe('testing shape class', () => {
 <polygon points="150, 18 244, 182 56, 182" fill="green" />
 <text x="150" y="125" font-size="60" text-anchor="middle" fill="black">'ABC'</text>
 </svg>`;
-        const triangle = new Shape()
-        triangle.setColor('green')
-        const actualSvg = triangle.render()
-        expect(actualSvg).toEqual(expectSVG)
-    })
+        const triangle = new Shape();
+        triangle.setColor('green') = this.shapeColor;
+        const actualSvg = triangle.render();
+        expect(actualSvg).toEqual(expectSVG);
+    });
 
-})
+});

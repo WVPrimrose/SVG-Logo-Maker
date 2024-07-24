@@ -38,8 +38,16 @@ const createSVG = [
     function init() {
         inquirer.prompt(createSVG)
         .then(userData => {
-            const shape1 = { Triangle, Circle, Square }(userData.text, userData.textColor, userData.shape, userData.shapeColor);
-            writeToFile('./logo.svg', shape1.file())
+            let shape;
+            if (userData.shape === 'triangle') {
+                shape = new Triangle(userData.text, userData.textColor, userData.shape, userData.shapeColor);
+            } else if (userData.shape === 'circle') {
+                shape = new Circle(userData.text, userData.textColor, userData.shape, userData.shapeColor);
+            } else if (userData.shape === 'square') {
+                shape = new Square(userData.text, userData.textColor, userData.shape, userData.shapeColor);
+            }
+            writeToFile('./logo.svg', shape.render());
         })
-    }
-init()
+}
+
+init(); 
